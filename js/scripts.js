@@ -3,16 +3,51 @@ var jogadorAtivo = 'X';
  * Lembra que falamos da matriz no último commit? pois bem, vamos criar. Se você não conseguiu pensar numa forma de resolver, talvez visualizando a matriz abaixo fique mais fácil :)
  * Por enquanto vamos fazer uma função para verificar se o jogo acabou, depois vamos aplicar quem ganhou.
  */
-var tabuleiro = [
+const winningCoords = [
+    [[0,0], [0,1], [0,2]],
+    [[1,0], [1,1], [1,2]],
+    [[2,0], [2,1], [2,2]],
+    [[0,0], [1,0], [2,0]],
+    [[0,1], [1,1], [2,1]],
+    [[0,2], [1,2], [2,2]],
+    [[0,0], [1,1], [2,2]],
+    [[0,2], [1,1], [2,0]]
+]
+ var tabuleiro = [
     [null,null,null],
     [null,null,null],
     [null,null,null],
 ]
+
+/**
+ * Vencedores
+ * 00 01 02
+ * 10 11 12
+ * 20 21 22
+ * 00 10 20
+ * 01 11 21
+ * 
+ */
+function checarVencedor(){
+    for(let jogo  = 0; jogo<winningCoords.length; jogo++){
+        let wc     = winningCoords[jogo];
+        let linha  = wc[0][0];
+        let coluna = wc[0][1];
+        let valor  = tabuleiro[linha][coluna];
+        if(valor!==null){
+            let valor2 = tabuleiro[wc[1][0],wc[1][1]];
+            let valor3 = tabuleiro[wc[2][0],wc[2][1]];
+            if((valor1===valor2)&&(valor1===valor3)){
+                return valor1;
+            }
+        }
+    }
+    return '';
+}
 /** A função vai varrer o tabuleiro procurando por algum valor com null se tiver, o jogo não acabou */
 function jogoAcabou(){
     for(let l=0;l<tabuleiro.length;l++){
         for(let c=0;c<tabuleiro[l].length;c++){
-            console.log(l+'-'+c+'='+tabuleiro[l][c]);
             if(tabuleiro[l][c]===null){
                 return false;
             }
@@ -38,11 +73,9 @@ function jogar(){
         this.innerHTML=jogadorAtivo;
         //Agora vamos atualizar nossa matriz
         let linhaColuna = linhaColunaDoClicado(this);
-        console.log(JSON.stringify(linhaColuna));
         let linha   = linhaColuna[0];
         let coluna  = linhaColuna[1];
         tabuleiro[linha][coluna]=jogadorAtivo;
-        console.log(tabuleiro);
         /** Jogada feita, só vamos alternar o jogador se o jogo acabar */
         if(jogoAcabou()){
             alert('Fim de Jogo! Mas não sei quem ganhou!');
