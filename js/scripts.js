@@ -4,16 +4,16 @@ var jogadorAtivo = 'X';
  * Por enquanto vamos fazer uma função para verificar se o jogo acabou, depois vamos aplicar quem ganhou.
  */
 var tabuleiro = [
-    [0,0,0],
-    [0,0,0],
-    [0,0,0]
+    [null,null,null],
+    [null,null,null],
+    [null,null,null],
 ]
 /** A função vai varrer o tabuleiro procurando por algum valor com null se tiver, o jogo não acabou */
 function jogoAcabou(){
     for(let l=0;l<tabuleiro.length;l++){
         for(let c=0;c<tabuleiro[l].length;c++){
             console.log(l+'-'+c+'='+tabuleiro[l][c]);
-            if(tabuleiro[l][c]===0){
+            if(tabuleiro[l][c]===null){
                 return false;
             }
         }
