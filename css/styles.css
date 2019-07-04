@@ -1,0 +1,46 @@
+/**
+* 
+  Para dar o visual do tabuleiro do jogo da velha, vamos usar css
+  Primeiro vamos importar uma fonte, a Raleway porque... eu gosto!
+**/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+/**
+CSS RESET 
+  Para aplicar margem interna e externa (respectivamente padding e margin de todo elemento para 0, 
+  E aplicar a composição de dimensão de cada elemento como border-box.
+*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  /**
+  A altura do body vai abranger toda a altura da tela, 
+  Fundo será preto (mas pode alterar para outra cor de sua preferência,
+  e apliquei a fonte que eu gosto!*/
+  body{
+      height:100vh;      
+      background: #000;      
+      font-family: 'Raleway', sans-serif;
+
+  }   
+  /** Para dar a aparência de grid, coloquei o display do quadro do nosso jogo como grid. Ele organizará todos os elementos como um grid (nome auto-explicativo, não?)
+      e o "auto" três vezes é para indicar que teremos 3 colunas. Como no HTML temos 9 itens, ele distribuirá de forma uniforme. Por último a cor preta
+  **/
+  .velha-board{
+      display: grid;
+      grid-template-columns: auto auto auto;
+      background-color:#000;
+  }
+  /**
+    Agora, apenas aplicando as dimensões dos 9 campos. Apliquei uma margem externa para o fundo do quadro aparecer dando a aparência da borda do jogo
+  **/
+  .velha-field {
+    font-size: 15pc;
+    margin:1pc;
+    background-color:#FFF;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;      
+  }
+  
+ 
