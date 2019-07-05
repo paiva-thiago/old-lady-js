@@ -1,12 +1,7 @@
 var jogadorAtivo = 'X';
-/*  Criei esse booleano para identificar se o jogo acabou - ele vai acabar se encontrar um vencedor ou não houver mais espaços para preencher 
-    vamos alterar lá embaixo esse cara! */
 var fim = false;
-/**
- * Vamos pensar em coordenadas linha/coluna: Quais são as sequências de 3 coordenadas que apontam para um vencedor? Vamos checar e colocar abaixo em uma constante:
- * 
- */
-const winningCoords = [
+
+const coordenadasComVencedor = [
     [[0,0], [0,1], [0,2]],
     [[1,0], [1,1], [1,2]],
     [[2,0], [2,1], [2,2]],
@@ -22,14 +17,9 @@ const winningCoords = [
     [null,null,null],
 ]
 
-/**
- * E aqui vamos usar nosso vetor de coordenadas.
- * Vou pegar cada sequência, e cada linha e coluna dos campos, e comparar se os valores são iguais. Se sim, eu finalizo o jogo .
- * 
- */
 function checarVencedor(){
-    for(let jogo  = 0; jogo<winningCoords.length; jogo++){
-        let coordenada     = winningCoords[jogo];
+    for(let jogo  = 0; jogo<coordenadasComVencedor.length; jogo++){
+        let coordenada     = coordenadasComVencedor[jogo];
         let linha  = coordenada[0][0];
         let coluna = coordenada[0][1];
         let valor  = tabuleiro[linha][coluna];
@@ -66,7 +56,6 @@ function linhaColunaDoClicado(elemento){
     return separados;
 }
 function jogar(){
-    //Aqui coloquei mais uma condição - não basta estar vazio, o jogo não pode ter terminado!
     if((!fim)&&((this.innerHTML!='X')&&(this.innerHTML!='O'))){
         this.innerHTML=jogadorAtivo;
         let linhaColuna = linhaColunaDoClicado(this);
